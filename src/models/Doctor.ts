@@ -22,17 +22,15 @@
 import mongoose, { Schema, Document } from 'mongoose';
 
 export interface IDoctor extends Document {
-    name: string;
-    email: string;
-    password: string;
-    specialization: string;
+  username: string;
+  email: string;
+  password: string;
 }
 
-const DoctorSchema: Schema = new Schema({
-    name: { type: String, required: true },
-    email: { type: String, required: true, unique: true },
-    password: { type: String, required: true },
-    specialization: { type: String },
+const doctorSchema: Schema<IDoctor> = new mongoose.Schema({
+  username: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true, select: false },
 });
 
-export const Doctor = mongoose.model<IDoctor>('Doctor', DoctorSchema);
+export const Doctor = mongoose.model<IDoctor>('Doctor', doctorSchema);

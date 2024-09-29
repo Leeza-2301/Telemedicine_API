@@ -10,7 +10,7 @@ export const createToken = (id: unknown, role: string): string => {
         };
 
         // Sign the token with a secret key and an expiration time
-        const token = jwt.sign(payload, process.env.JWT_SECRET!, { expiresIn: '1h' }); // Expires in 1 hour
+        const token = jwt.sign(payload, process.env.JWT_SECRET!, { expiresIn: '1d' }); // Expires in 1 hour
 
         return token;
     } catch (error) {

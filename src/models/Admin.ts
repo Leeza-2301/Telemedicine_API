@@ -1,21 +1,17 @@
-
-import mongoose, { Schema, Document } from 'mongoose';
+import mongoose, { Schema, Document } from "mongoose";
 
 export interface IAdmin extends Document {
-  adminId: String;
-  name: string;
+  username: string;
   email: string;
   password: string;
-  isSuperAdmin: boolean; 
+  issuperadmin: boolean;
 }
 
-const AdminSchema: Schema = new Schema({
-  adminId : { type: String, required: true, unique: true },
-  name: { type: String, required: true },
+const adminSchema: Schema<IAdmin> = new mongoose.Schema({
+  username: { type: String, required: true },
   email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-  isSuperAdmin: { type: Boolean, required: true, default: false }, 
+  password: { type: String, required: true, select: false },
+  issuperadmin: { type: Boolean, default: false }, // Superadmin flag
 });
 
-
-export const Admin = mongoose.model<IAdmin>('Admin', AdminSchema);
+export const Admin = mongoose.model<IAdmin>("Admin", adminSchema);
