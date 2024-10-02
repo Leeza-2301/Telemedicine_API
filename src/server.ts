@@ -1,4 +1,4 @@
-import app  from "./app.ts";
+import app  from "./app";
 
 const port = process.env.PORT || 3000; // Fallback to port 3000 if PORT is not set
 
