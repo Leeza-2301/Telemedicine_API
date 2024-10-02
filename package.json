@@ -2,9 +2,6 @@
   "name": "telemedicine_api",
   "version": "1.0.0",
   "main": "server.js",
-  "engines": {
-    "node": "10.x"
-  },
   "scripts": {
     "build": "tsc", 
     "start": "node dist/server.js",  
