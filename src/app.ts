@@ -19,7 +19,7 @@
 // export default app;
 
 
-import express from 'express';
+import express,{ Request, Response } from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser'; // Add this
@@ -35,8 +35,10 @@ app.use(express.json());
 app.use(cookieParser()); // Add this
 
 // Connect to MongoDB
+console.log(process.env.MONGO_URI);
+
 mongoose
-  .connect(process.env.MONGO_URI!)
+  .connect(process.env.MONGO_URI as string)
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.error(err));
 
@@ -45,5 +47,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/patients', patientRoutes);
 app.use('/api/doctors', doctorRoutes);
 app.use('/api/admin', adminRoutes);
-
+app.use('/',(req: Request , res : Response) =>{
+  res.status(200).json({ message: "Welcome to the telemedicine api." });
+})
 export default app;
