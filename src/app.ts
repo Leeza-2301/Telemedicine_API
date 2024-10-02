@@ -48,6 +48,7 @@ app.use('/api/patients', patientRoutes);
 app.use('/api/doctors', doctorRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/',(req: Request , res : Response) =>{
+  console.log(process.env.MONGO_URI);
   res.status(200).json({ message: "Welcome to the telemedicine api." });
 })
 export default app;
