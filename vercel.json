@@ -11,10 +11,6 @@
         "src": "/(.*)",
         "dest": "src/server.ts"
       }
-    ],
-    "ignoreCommand": "npm run test",
-    "devCommand": "npm run dev",
-    "buildCommand": "npm run build",
-    "startCommand": "npm run start"
+    ]
   }
   
